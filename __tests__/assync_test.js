@@ -35,4 +35,17 @@ describe('Testear Fallos', () => {
         await expect(request).rejects.toEqual(Error('Request failed with status code 404'));
                                                
     });
+
+    test('Realizar una petición con error a una API - 500', async () => {
+        const apiError = 'http://httpstat.us/500';
+        const request = getDataFromApi(apiError);
+        await expect(request).rejects.toEqual(Error('Request failed with status code 500'));
+                                               
+    });
+
+    test('Resuelve un hola', async () => {
+        await expect(Promise.resolve('Hola')).resolves.toBe('Hola');
+        await expect(Promise.resolve('Error')).resolves.toBe('Error');                                      
+    });
+
 });
