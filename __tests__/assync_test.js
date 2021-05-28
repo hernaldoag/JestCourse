@@ -27,3 +27,12 @@ describe('Probar Async/Await 2', () => {
       expect(data2.name).toEqual('Rick Sanchez');
     });
   });
+
+describe('Testear Fallos', () => {
+    test('Realizar una petición con error a una API', async () => {
+        const apiError = 'http://httpstat.us/404';
+        const request = getDataFromApi(apiError);
+        await expect(request).rejects.toEqual(Error('Request failed with status code 404'));
+                                               
+    });
+});
